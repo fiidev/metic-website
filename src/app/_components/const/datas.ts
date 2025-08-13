@@ -582,7 +582,7 @@ export const divisi: DivisiProps[] = [
   {
     image: "/assets/image/logo-medcom.png",
     preview: "Berfokus pada edukasi, personal branding dan media partner",
-    desc: ``,
+    desc: `MedCom is the media and communication division under the Moklet Education of Technology and Informatic Club (METIC) at SMK Telkom Malang, also known as Moklet. We’re a team of students specializing in educational content production, personal branding development, and media partnership management. Our activities include video editing, copywriting, event documentation, media coverage, managing digital publications across platforms, etc.`,
     name: "MedCom",
     alias: "Media Communication",
     id: "2",
@@ -656,6 +656,22 @@ export const divisi: DivisiProps[] = [
         image: "/assets/image/Portofolio/Interview Bayu Skak.png",
         link: "https://www.instagram.com/p/DCBuGSoyuwi/",
         title: "Interview Bayu Skak",
+      },
+      {
+      date: "18/1/2025",
+        sosmed: "medcom",
+        id: "9",
+        image: "/assets/image/Portofolio/moklet talks.png",
+        link: "https://www.youtube.com/watch?v=N04giqDZzdM",
+        title: " Moklet Talks",
+      },
+      {
+      date: "28/4/2025",
+        sosmed: "medcom",
+        id: "10",
+        image: "/assets/image/Portofolio/thumbnailksy.png",
+        link: "https://www.instagram.com/p/DI_MUPOJ6z-/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+        title: " MedPart ArtFest Kosayu 2025",
       },
     ],
     team: [
@@ -887,12 +903,12 @@ export const divisi: DivisiProps[] = [
         title: "PhotoBooth EduFest 2025",
       },
       {
-        date: "01/01/2025",
+        date: "01/01/2024",
         sosmed: "meticmerch",
         id: "4",
         image: "/assets/image/Portofolio/PB Elqif.png",
         link: "https://meticmerch.org/",
-        title: "PhotoBooth Elqif 2025",
+        title: "PhotoBooth Elqif 2024",
       },
       {
         date: "01/01/2025",
@@ -903,7 +919,7 @@ export const divisi: DivisiProps[] = [
         title: "PhotoBooth Saraya 2025",
       },
       {
-        date: "01/01/2025",
+        date: "01/05/2024",
         sosmed: "meticmerch",
         id: "6",
         image: "/assets/image/Portofolio/PB Antareja.png",
@@ -911,13 +927,14 @@ export const divisi: DivisiProps[] = [
         title: "PhotoBooth Antareja 2024",
       },
       {
-        date: "01/01/2025",
+        date: "27/10//2024",
         sosmed: "meticmerch",
         id: "7",
         image: "/assets/image/Portofolio/PB Diesnat.png",
         link: "https://meticmerch.org/",
         title: "PhotoBooth DiesNatalis 2024",
       },
+      
     ],
     team: [
       {

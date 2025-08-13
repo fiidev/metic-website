@@ -1,16 +1,44 @@
 import Image from "next/image";
+import SplitText from "./SplitText";
+import BlurText from "./BlurText";
+import ShinyText from "./Shinyteks";
 
 export default function Header() {
   return (
     <>
       <div className="mt-28">
         <div className="text-center">
-          <h1 className="font-[700] text-primary leading-[54px] text-[49px]">
-            Yuk! Kepoin METIC!
-          </h1>
-          <h3 className="font-[700] mt-[2px] text-primary leading-[54px] text-[30px]">
+
+          <BlurText
+            delay={150}
+            animateBy="words"
+            direction="top"
+            text="Yuk! Kepoin METIC!"
+            className="font-[700] text-primary justify-center leading-[54px] text-[49px] text-center"
+          />
+          {/* <SplitText
+            text="Yuk! Kepoin METIC!"
+            className="font-[700] text-primary leading-[54px] text-[49px] text-center"
+            delay={60}
+            duration={0.6}
+            ease="power3.out"
+            splitType="chars"
+            from={{ opacity: 0, y: 40 }}
+            to={{ opacity: 1, y: 0 }}
+            threshold={0.1}
+            rootMargin="-100px"
+            textAlign="center"
+          /> */}
+          {/* <h3 className="font-[700] mt-[2px] text-primary leading-[54px] text-[30px]">
             Moklet Education of Technology Informatic Club
-          </h3>
+          </h3> */}
+          <BlurText
+            delay={150}
+            animateBy="words"
+            direction="top"
+            text=" Moklet Education of Technology Informatic Club"
+            className="font-[700] text-primary justify-center leading-[54px] text-[40px] text-center"
+          />
           <p className="mt-[20px] text-black font-[400] text-[15px] leading-5">
             METIC (Moklet Education of Technology and Informatics Club) adalah
             organisasi teknologi di SMK Telkom Malang yang jadi <br /> wadah

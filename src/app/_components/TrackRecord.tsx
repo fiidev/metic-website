@@ -24,6 +24,7 @@ const TrackRecord: React.FC<{ datas: TrackRecordProps[] }> = ({ datas }) => {
   const maxInternationalIndex = internationalLength - visibleCard;
   const cardWidth = 377;
   const gap = 43;
+  
   useEffect(() => {
     const timerInter = setInterval(() => {
       setCurrentInternational((prev) => (prev === maxInternationalIndex ? 0 : prev + 1));
@@ -81,6 +82,7 @@ const TrackRecord: React.FC<{ datas: TrackRecordProps[] }> = ({ datas }) => {
           </h4>
           <h1 className="text-white font-[700] text-[45px]">Our Event</h1>
         </div>
+        {/* bagian event */}
         <div className="relative shrink-0 min-xl:w-[60%] max-sm:w-full overflow-x-hidden max-sm:px-3.5 max-sm:py-7 rounded-[18px]">
           <div
             className="flex flex-row-reverse gap-[43px] transition-transform duration-300"
@@ -138,6 +140,7 @@ const TrackRecord: React.FC<{ datas: TrackRecordProps[] }> = ({ datas }) => {
           </h4>
           <h1 className="text-white font-[700] text-[45px]">Metic Go International!</h1>
         </div>
+        {/* bagian internasional */}
         <div className="relative max-sm:w-full max-sm:px-3.5 max-sm:py-7 rounded-[18px] gap-[43px] shrink-0 w-[50%] overflow-x-hidden">
           <div
             className="flex gap-[43px] transition-transform duration-300"

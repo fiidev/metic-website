@@ -2,6 +2,23 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import { divisi } from "./const/datas";
+import AnimatedContent from "./AnimatedContent";
+
+
+<AnimatedContent
+  distance={150}
+  direction="horizontal"
+  reverse={false}
+  duration={1.2}
+  ease="bounce.out"
+  initialOpacity={0.2}
+  animateOpacity
+  scale={1.1}
+  threshold={0.2}
+  delay={1.0}
+>
+  <div>join now</div>
+</AnimatedContent>
 
 export default function DivisionSection() {
   return (
