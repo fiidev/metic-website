@@ -35,7 +35,7 @@ export default function RegistrationPage() {
     portfolio: "",
 
     // Availability
-    availability: "",
+    // availability: "",
     commitment: "",
     expectations: "",
 
@@ -208,7 +208,7 @@ export default function RegistrationPage() {
           alert("Format email tidak valid");
           return false;
         }
-        const phoneRegex = /^(\+62|62|0)8[1-9][0-9]{6,9}$/;
+        const phoneRegex = /^(\+62|62|0)8[1-9][0-9]{6,11}$/;
         if (!phoneRegex.test(formData.phone)) {
           alert(
             "Format nomor WhatsApp tidak valid (gunakan format: 08xxxxxxxxxx)"
@@ -240,10 +240,10 @@ export default function RegistrationPage() {
         return true;
 
       case 4:
-        if (!formData.availability) {
-          alert("Ketersediaan Waktu harus dipilih");
-          return false;
-        }
+        // if (!formData.availability) {
+        //   alert("Ketersediaan Waktu harus dipilih");
+        //   return false;
+        // }
         if (!formData.commitment.trim()) {
           alert("Komitmen Anda harus diisi");
           return false;
@@ -287,7 +287,7 @@ export default function RegistrationPage() {
           formData.email.trim() &&
           /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email) &&
           formData.phone.trim() &&
-          /^(\+62|62|0)8[1-9][0-9]{6,9}$/.test(formData.phone) &&
+          /^(\+62|62|0)8[1-9][0-9]{6,11}$/.test(formData.phone) &&
           formData.nisn.trim()
         );
       case 2:
@@ -300,7 +300,7 @@ export default function RegistrationPage() {
         return true;
       case 4:
         return (
-          formData.availability &&
+          // formData.availability &&
           formData.commitment.trim().length >= 30 &&
           formData.expectations.trim().length >= 30
         );
@@ -320,7 +320,7 @@ export default function RegistrationPage() {
       { field: formData.firstChoice, name: "Pilihan Divisi Pertama" },
       { field: formData.selectedRole, name: "Role" },
       { field: formData.motivation, name: "Motivasi" },
-      { field: formData.availability, name: "Ketersediaan Waktu" },
+      // { field: formData.availability, name: "Ketersediaan Waktu" },
       { field: formData.commitment, name: "Komitmen" },
       { field: formData.expectations, name: "Ekspektasi" },
     ];
@@ -370,7 +370,7 @@ export default function RegistrationPage() {
         motivation: formData.motivation.trim(),
         experience: formData.experience.trim(),
         portfolio: formData.portfolio.trim(),
-        availability: formData.availability,
+        // availability: formData.availability,
         commitment: formData.commitment.trim(),
         expectations: formData.expectations.trim(),
         timestamp: new Date().toLocaleString("id-ID", {
@@ -511,7 +511,7 @@ export default function RegistrationPage() {
                   }
                   className={`w-full px-4 py-3 border rounded-lg focus:outline-none focus:ring-2 transition-colors ${
                     !formData.phone.trim() ||
-                    !/^(\+62|62|0)8[1-9][0-9]{6,9}$/.test(formData.phone)
+                    !/^(\+62|62|0)8[1-9][0-9]{6,11}$/.test(formData.phone)
                       ? "border-red-300 focus:ring-red-500"
                       : "border-gray-300 focus:ring-[#A10000]"
                   }`}
@@ -522,7 +522,7 @@ export default function RegistrationPage() {
                   </p>
                 )}
                 {formData.phone.trim() &&
-                  !/^(\+62|62|0)8[1-9][0-9]{6,9}$/.test(formData.phone) && (
+                  !/^(\+62|62|0)8[1-9][0-9]{6,11}$/.test(formData.phone) && (
                     <p className="text-sm text-red-600">
                       Format nomor tidak valid (gunakan: 08xxxxxxxxxx)
                     </p>
@@ -762,7 +762,7 @@ export default function RegistrationPage() {
       case 4:
         return (
           <div className="space-y-6">
-            <div className="space-y-4">
+            {/* <div className="space-y-4">
               <label className="block text-sm font-medium text-gray-700">
                 Ketersediaan Waktu *
               </label>
@@ -811,7 +811,7 @@ export default function RegistrationPage() {
                   Ketersediaan waktu wajib dipilih
                 </p>
               )}
-            </div>
+            </div> */}
 
             <div className="space-y-2">
               <label className="block text-sm font-medium text-gray-700">
@@ -956,10 +956,10 @@ export default function RegistrationPage() {
                       {divisions.find((d) => d.id === formData.secondChoice)
                         ?.name || "Tidak ada"}
                     </p>
-                    <p>
+                    {/* <p>
                       <span className="font-medium">Ketersediaan:</span>{" "}
                       {formData.availability}
-                    </p>
+                    </p> */}
                   </div>
                 </div>
               </div>
