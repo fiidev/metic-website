@@ -1,0 +1,79 @@
+# Project Rules & Context: Static to Database Migration
+
+Welcome! This file provides full technical details of the static-to-database migration task for the METIC Website. Use this context to assist you in editing files.
+
+## Project Structure
+
+- `src/app/_components/const/datas.ts`: Original source of static data (divisions, leaders, FAQ, and track records).
+- `src/lib/prisma.ts`: Exposes the Prisma Client instance (`prisma`) for querying.
+- `prisma/schema.prisma`: Defines the PostgreSQL schema.
+- `prisma/seed.ts`: Seeds the database using data imported from `datas.ts`.
+- `src/app/(dashboard)/page.tsx`: Home page rendering `DivisionSection`, `TrackRecord`, `Leader`, and `FAQ`.
+- `src/app/(dashboard)/divisi/[id]/page.tsx`: Individual division detail page.
+
+---
+
+## Database Models & Client Component Mappings
+
+### 1. FAQ Data
+- **DB Model**: `FAQ` (`id`, `question`, `answer`, `imageUrl`, `order`, `isPublished`)
+- **Mapping to `FAQCardProps`**:
+  - `profileImg`: Map `FAQ.imageUrl` (string or null, fallback to MASCOT image if needed).
+  - `question`: Map `FAQ.question`.
+  - `response`: Map `FAQ.answer` split by newlines `\n` into an array of strings.
+
+### 2. Leader/Core Team Data
+- **DB Model**: `OrganizationPosition` (`id`, `name`, `imageUrl`, `position`, `order`, `isPublished`)
+- **Mapping to `LeaderComponent`**:
+  - `name`: Map `OrganizationPosition.name`.
+  - `role`: Map `OrganizationPosition.position`.
+  - `image`: Map `OrganizationPosition.imageUrl`.
+
+### 3. Track Record Data
+- **DB Model**: `TrackRecord` (`id`, `title`, `displayName`, `description`, `imageUrl`, `recordType`, `country`, `recordDate`, `order`, `isPublished`)
+- **Mapping to `TrackRecordProps`**:
+  - `name`: Map `TrackRecord.displayName` (fallback to empty string).
+  - `desc`: Map `TrackRecord.description`.
+  - `img`: Map `TrackRecord.imageUrl` (fallback to empty string).
+  - `eventDate`: Format `TrackRecord.recordDate` to a short date string (e.g. `Aug 28, 2024` or `Jun 2, 2025`).
+  - `title`: Map `TrackRecord.title`.
+  - `type`: Map `TrackRecord.recordType` (transform `'EVENT' -> 'Event'`, `'INTERNATIONAL' -> 'International'`, `'ACHIEVEMENT' -> 'Achievement'`).
+  - `country`: Map `TrackRecord.country`.
+
+### 4. Division Detail Data
+- **DB Model**: `Division` (`id`, `slug`, `name`, `alias`, `description`, `preview`, `logoUrl`, `order`, `isPublished`)
+- **Relations**:
+  - `programs`: `Program[]` (`id`, `title`, `description`, `order`)
+  - `portfolios`: `Portfolio[]` (`id`, `title`, `description`, `socialMedia`, `link`, `eventDate`, `coverImageUrl`, `order`)
+  - `members`: `MemberDivision[]` -> `Member` with `generation` and `memberRoles` -> `Role`.
+- **Slug Routing**:
+  - Use `division.slug` for URL routing (e.g., `/divisi/mokletdev`).
+  - Maintain compatibility for numeric parameters (e.g. `/divisi/1` maps to `mokletdev`, `2` to `medcom`, `3` to `metic-merch`).
+- **Mapping to Sub-components**:
+  - **Header**:
+    - `alias`: `division.alias`
+    - `desc`: `division.description`
+    - `image`: `division.logoUrl`
+    - `name`: `division.name`
+  - **Program Kerja**:
+    - `title`: `program.title`
+    - `desc`: `program.description`
+  - **Portfolio**:
+    - `id`: `portfolio.id`
+    - `title`: `portfolio.title`
+    - `sosmed`: `portfolio.socialMedia`
+    - `image`: `portfolio.coverImageUrl`
+    - `link`: `portfolio.link`
+    - `date`: Format `portfolio.eventDate` as `DD/MM/YYYY`.
+  - **Team Members**:
+    - `name`: `member.name`
+    - `image`: `member.imageUrl`
+    - `role`: Format as `"{Generation Name} | {Role Name 1, Role Name 2...}"` (e.g., `"Metizen 32 | General Manager MokletDev"`).
+
+---
+
+## Migration Guidelines & Best Practices
+
+1. **Avoid Duplicating Code**: Use server components (`page.tsx`) to fetch data from the database using Prisma and pass the structured records down to the client components.
+2. **Robust Fallbacks**: Maintain the static array `datas.ts` imports as fallback variables in case the database is not seeded yet during development.
+3. **Database Environment Variables**: Make sure `DATABASE_URL` is defined in `.env` in the root folder before starting the server or generating prisma client.

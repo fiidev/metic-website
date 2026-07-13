@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import { divisi } from "./const/datas";
 import AnimatedContent from "./AnimatedContent";
+import { prisma } from "@/lib/prisma";
 
 
 <AnimatedContent
@@ -20,7 +21,32 @@ import AnimatedContent from "./AnimatedContent";
   <div>join now</div>
 </AnimatedContent>
 
-export default function DivisionSection() {
+export default async function DivisionSection() {
+  let divisions = divisi.map((division) => ({
+    name: division.name,
+    preview: division.preview,
+    image: division.image,
+    slug: division.name.toLowerCase().replace(/\s+/g, "-"),
+  }));
+
+  try {
+    const dbDivisions = await prisma.division.findMany({
+      where: { isPublished: true },
+      orderBy: { order: "asc" },
+    });
+
+    if (dbDivisions.length) {
+      divisions = dbDivisions.map((division) => ({
+        name: division.name,
+        preview: division.preview ?? "",
+        image: division.logoUrl ?? "/assets/image/mecaKeren.png",
+        slug: division.slug,
+      }));
+    }
+  } catch (error) {
+    console.error("Unable to load divisions from the database:", error);
+  }
+
   return (
     <>
       <div className="bg-white w-full mt-16 pb-10" id="divisi">
@@ -40,9 +66,9 @@ export default function DivisionSection() {
           </p>
         </div>
         <div className="mt-[38px] max-sm:flex-col flex justify-center gap-[87px] px-[124.5px] mx-auto items-center">
-          {divisi.map((d, i) => (
+          {divisions.map((d) => (
             <div
-              key={i}
+              key={d.slug}
               className="flex drop-shadow-[1px_2px_8px_rgba(0,0,0,0.25)] bg-white flex-col items-center justify-center w-[339px] h-[496px] rounded-[26.42px] py-[39px] px-[46px] gap-[18px]">
               <div className="block w-[247px] h-[247px] bg-primary rounded-full">
                 <div className="flex w-full h-full justify-center items-center">
@@ -63,7 +89,7 @@ export default function DivisionSection() {
                   {d.preview}
                 </p>
                 <a
-                  href={`/divisi/${d.id}`}
+                  href={`/divisi/${d.slug}`}
                   className="block mt-[10px] mx-auto py-[9px] w-[172px] text-center h-[39px] rounded-[20px] bg-primary text-white font-[500] text-[12px] ">
                   Read More
                   <FontAwesomeIcon icon={faArrowRight} className="ml-2" />

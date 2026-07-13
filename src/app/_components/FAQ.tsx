@@ -1,18 +1,19 @@
 "use client";
 import Image from "next/image";
-import { FAQCard } from "./card";
-import { dataFAQ } from "./const/datas";
+import { FAQCard, FAQCardProps } from "./card";
 import { useEffect, useState } from "react";
 
-export default function Faq() {
+export default function Faq({ datas }: { datas: FAQCardProps[] }) {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   useEffect(() => {
+    if (datas.length < 2) return;
+
     const changeSlideInterval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % dataFAQ.length);
+      setCurrentSlide((prev) => (prev + 1) % datas.length);
     }, 5000);
     return () => clearInterval(changeSlideInterval);
-  }, [currentSlide]);
+  }, [datas.length]);
 
   return (
     <>
@@ -56,7 +57,7 @@ export default function Faq() {
               style={{
                 transform: `translateX(-${currentSlide * 100}%)`,
               }}>
-              {dataFAQ.map((faq, index) => (
+              {datas.map((faq, index) => (
                 <div key={index} className="w-full flex-shrink-0 px-2">
                   <FAQCard {...faq} />
                 </div>
@@ -66,7 +67,7 @@ export default function Faq() {
 
           {/* Slider Indicators */}
           <div className="flex justify-center items-center gap-x-2 mt-8 relative z-10">
-            {Array.from({ length: dataFAQ.length }).map((_, index) => (
+            {Array.from({ length: datas.length }).map((_, index) => (
               <button key={index} onClick={() => setCurrentSlide(index)}>
                 <div
                   className={`rounded-full bg-white transition-all duration-300 ${

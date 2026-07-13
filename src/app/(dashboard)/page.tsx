@@ -2,19 +2,90 @@ import DivisionSection from "../_components/DivisionSection";
 import Header from "../_components/Header";
 import Visi from "../_components/Visi";
 import Leader from "../_components/Leader";
-import { LeadersData, TrackData } from "../_components/const/datas";
+import { dataFAQ, LeadersData, TrackData } from "../_components/const/datas";
 import TrackRecord from "../_components/TrackRecord";
 import Faq from "../_components/FAQ";
+import { prisma } from "@/lib/prisma";
 
-export default function Home() {
+const MASCOT_IMAGE = "/assets/image/mecaKeren.png";
+
+function formatShortDate(date: Date | null) {
+  if (!date) return "";
+
+  return new Intl.DateTimeFormat("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+    timeZone: "UTC",
+  }).format(date);
+}
+
+const recordTypeLabels = {
+  EVENT: "Event",
+  INTERNATIONAL: "International",
+  ACHIEVEMENT: "Achievement",
+} as const;
+
+export default async function Home() {
+  let trackRecords = TrackData;
+  let leaders = LeadersData;
+  let faqs = dataFAQ;
+
+  try {
+    const [dbTrackRecords, dbLeaders, dbFaqs] = await Promise.all([
+      prisma.trackRecord.findMany({
+        where: { isPublished: true },
+        orderBy: { order: "asc" },
+      }),
+      prisma.organizationPosition.findMany({
+        where: { isPublished: true },
+        orderBy: { order: "asc" },
+      }),
+      prisma.fAQ.findMany({
+        where: { isPublished: true },
+        orderBy: { order: "asc" },
+      }),
+    ]);
+
+    if (dbTrackRecords.length) {
+      trackRecords = dbTrackRecords.map((record) => ({
+        name: record.displayName ?? "",
+        desc: record.description,
+        img: record.imageUrl ?? "",
+        eventDate: formatShortDate(record.recordDate),
+        title: record.title,
+        type: recordTypeLabels[record.recordType],
+        country: record.country ?? undefined,
+      }));
+    }
+
+    if (dbLeaders.length) {
+      leaders = dbLeaders.map((leader) => ({
+        name: leader.name,
+        role: leader.position,
+        image: leader.imageUrl ?? MASCOT_IMAGE,
+      }));
+    }
+
+    if (dbFaqs.length) {
+      faqs = dbFaqs.map((faq) => ({
+        profileImg: faq.imageUrl ?? MASCOT_IMAGE,
+        question: faq.question,
+        response: faq.answer.split("\n"),
+      }));
+    }
+  } catch (error) {
+    console.error("Unable to load home content from the database:", error);
+  }
+
   return (
     <>
       <Header />
       <Visi />
       <DivisionSection />
-      <TrackRecord datas={TrackData} />
-      <Leader datas={LeadersData} />
-      <Faq />
+      <TrackRecord datas={trackRecords} />
+      <Leader datas={leaders} />
+      <Faq datas={faqs} />
     </>
   );
 }
