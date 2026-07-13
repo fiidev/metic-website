@@ -1,18 +1,12 @@
 import "dotenv/config";
 
 import { PrismaClient } from "../src/generated/prisma/client";
-import { PrismaNeon } from "@prisma/adapter-neon";
-import { neonConfig } from "@neondatabase/serverless";
+import { PrismaNeonHttp } from "@prisma/adapter-neon";
 import { divisi } from "../src/app/_components/const/datas";
 import { LeadersData, TrackData, dataFAQ } from "../src/app/_components/const/datas";
-import ws from "ws";
 import { parseMemberRole, slugify, parseDate } from "./utils/parser";
 
-neonConfig.webSocketConstructor = ws;
-
-const adapter = new PrismaNeon({
-  connectionString: process.env.DATABASE_URL!,
-});
+const adapter = new PrismaNeonHttp(process.env.DATABASE_URL!, {});
 
 const prisma = new PrismaClient({
   adapter,

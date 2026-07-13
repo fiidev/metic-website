@@ -1,9 +1,6 @@
 -- CreateEnum
 CREATE TYPE "TrackRecordType" AS ENUM ('EVENT', 'INTERNATIONAL', 'ACHIEVEMENT');
 
--- CreateEnum
-CREATE TYPE "ContentStatus" AS ENUM ('DRAFT', 'PUBLISHED', 'ARCHIVED');
-
 -- CreateTable
 CREATE TABLE "Generation" (
     "id" TEXT NOT NULL,
