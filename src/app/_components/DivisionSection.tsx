@@ -36,7 +36,7 @@ export default async function DivisionSection() {
     });
 
     if (dbDivisions.length) {
-      divisions = dbDivisions.map((division) => ({
+      divisions = dbDivisions.map((division: { name: string; preview: string | null; logoUrl: string | null; slug: string }) => ({
         name: division.name,
         preview: division.preview ?? "",
         image: division.logoUrl ?? "/assets/image/mecaKeren.png",

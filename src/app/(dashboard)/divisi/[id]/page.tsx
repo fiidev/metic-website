@@ -29,7 +29,7 @@ export async function generateStaticParams() {
     });
 
     if (divisions.length) {
-      return divisions.map((division) => ({ id: division.slug }));
+      return divisions.map((division: { slug: string }) => ({ id: division.slug }));
     }
   } catch (error) {
     console.error("Unable to generate division routes from the database:", error);
@@ -76,11 +76,11 @@ export default async function DivisionPage({ params }: { params: Params }) {
         preview: division.preview ?? "",
         alias: division.alias ?? division.name,
         desc: division.description,
-        prokja: division.programs.map((program) => ({
+        prokja: division.programs.map((program: { title: string; description: string }) => ({
           title: program.title,
           desc: program.description,
         })),
-        portfolio: division.portfolios.map((portfolio) => ({
+        portfolio: division.portfolios.map((portfolio: { id: string; title: string; socialMedia: string | null; coverImageUrl: string | null; link: string | null; eventDate: Date | null }) => ({
           id: portfolio.id,
           title: portfolio.title,
           sosmed: portfolio.socialMedia ?? "",
@@ -89,12 +89,12 @@ export default async function DivisionPage({ params }: { params: Params }) {
           date: formatPortfolioDate(portfolio.eventDate),
         })),
         team: division.members
-          .sort((a, b) => a.member.order - b.member.order)
-          .map(({ member }) => ({
+          .sort((a: { member: { order: number } }, b: { member: { order: number } }) => a.member.order - b.member.order)
+          .map(({ member }: { member: { name: string; imageUrl: string | null; generation: { name: string }; memberRoles: { role: { name: string } }[] } }) => ({
             name: member.name,
             image: member.imageUrl ?? "/assets/image/mecaKeren.png",
             role: `${member.generation.name} | ${member.memberRoles
-              .map(({ role }) => role.name)
+              .map(({ role }: { role: { name: string } }) => role.name)
               .join(", ")}`,
           })),
       };
