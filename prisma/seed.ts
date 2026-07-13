@@ -6,6 +6,7 @@ import { neonConfig } from "@neondatabase/serverless";
 import { divisi } from "../src/app/_components/const/datas";
 import { LeadersData, TrackData, dataFAQ } from "../src/app/_components/const/datas";
 import ws from "ws";
+import { parseMemberRole, slugify, parseDate } from "./utils/parser";
 
 neonConfig.webSocketConstructor = ws;
 
@@ -16,87 +17,6 @@ const adapter = new PrismaNeon({
 const prisma = new PrismaClient({
   adapter,
 });
-
-function slugify(text: string) {
-  return text
-    .toLowerCase()
-    .trim()
-    .replace(/&/g, "and")
-    .replace(/\s+/g, "-")
-    .replace(/[^\w-]/g, "");
-}
-
-// Parse Roles
-function parseRoles(raw: string): string[] {
-  const [, rolePart] = raw.split("|");
-
-  if (!rolePart) {
-    return [];
-  }
-
-  return rolePart
-    .split(",")
-    .map((role) => role.trim())
-    .filter(Boolean);
-}
-
-// Parse Generation
-function parseGeneration(raw: string): number {
-  const [generation] = raw.split("|");
-
-  return Number(
-    generation.replace("Metizen", "").trim()
-  );
-}
-
-// Parse Member
-function parseMember(rawRole: string) {
-  const [generationPart, rolePart] = rawRole
-    .split("|")
-    .map((value) => value.trim());
-
-  const generationNumber = Number(
-    generationPart.replace("Metizen", "").trim()
-  );
-
-  const roles =
-    rolePart
-      ?.split(",")
-      .map((role) => role.trim())
-      .filter(Boolean) ?? [];
-
-  return {
-    generationNumber,
-    roles,
-  };
-}
-
-// Parse tanggal
-function parseDate(date: string): Date | null {
-  if (!date) {
-    return null;
-  }
-
-  // Format: 07/07/2024
-  if (date.includes("/")) {
-    const [day, month, year] = date.split("/").map(Number);
-
-    if (!day || !month || !year) {
-      return null;
-    }
-
-    return new Date(year, month - 1, day);
-  }
-
-  // Format: Aug 28, 2024
-  const parsed = new Date(date);
-
-  if (isNaN(parsed.getTime())) {
-    return null;
-  }
-
-  return parsed;
-}
 
 const leaderMemberMap: Record<string, string> = {
   "Sauqy Rahmatul Ramadhan": "Sauqy Rahmatul Ramadhan",
@@ -171,7 +91,7 @@ async function main() {
 
 for (const division of divisi) {
   for (const member of division.team) {
-    const parsedRoles = parseRoles(member.role);
+    const { roles: parsedRoles } = parseMemberRole(member.role);
 
     parsedRoles.forEach((role) => roles.add(role));
   }
@@ -207,11 +127,11 @@ for (const division of divisi) {
   for (let index = 0; index < division.team.length; index++) {
     const member = division.team[index];
 
-    const parsed = parseMember(member.role);
+    const parsed = parseMemberRole(member.role);
 
     const generation = await prisma.generation.findUnique({
       where: {
-        number: parsed.generationNumber,
+        number: parsed.generation,
       },
     });
 
@@ -255,7 +175,7 @@ for (const division of divisi) {
   if (!dbDivision) continue;
 
   for (const member of division.team) {
-    const generationNumber = parseGeneration(member.role);
+    const generationNumber = parseMemberRole(member.role).generation;
 
     const generation = await prisma.generation.findUnique({
       where: {
@@ -301,7 +221,7 @@ console.log(`Total relasi member-division: ${memberDivisionCount}`);
 
 for (const division of divisi) {
   for (const member of division.team) {
-    const parsed = parseMember(member.role);
+    const parsed = parseMemberRole(member.role);
 
     if (parsed.roles.length === 0) {
       continue;
@@ -309,7 +229,7 @@ for (const division of divisi) {
 
     const generation = await prisma.generation.findUnique({
   where: {
-    number: parsed.generationNumber,
+    number: parsed.generation,
   },
 });
 
