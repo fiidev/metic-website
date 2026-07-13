@@ -19,7 +19,6 @@ const prisma = new PrismaClient({
 });
 
 const leaderMemberMap: Record<string, string> = {
-  "Sauqy Rahmatul Ramadhan": "Sauqy Rahmatul Ramadhan",
   "Muhammad Syamil Muwahhid": "M Syamil Muwahhid",
   "Naufal Nabil R.": "Naufal Nabil Ramadhan",
   "Muhammad Radika A. B.": "M. Radika Afwa Bimalaksa",
