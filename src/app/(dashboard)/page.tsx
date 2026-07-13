@@ -48,19 +48,19 @@ export default async function Home() {
     ]);
 
     if (dbTrackRecords.length) {
-      trackRecords = dbTrackRecords.map((record) => ({
+      trackRecords = dbTrackRecords.map((record: { displayName: string | null; description: string; imageUrl: string | null; recordDate: Date | null; title: string; recordType: string; country: string | null }) => ({
         name: record.displayName ?? "",
         desc: record.description,
         img: record.imageUrl ?? "",
         eventDate: formatShortDate(record.recordDate),
         title: record.title,
-        type: recordTypeLabels[record.recordType],
+        type: recordTypeLabels[record.recordType as keyof typeof recordTypeLabels],
         country: record.country ?? undefined,
       }));
     }
 
     if (dbLeaders.length) {
-      leaders = dbLeaders.map((leader) => ({
+      leaders = dbLeaders.map((leader: { name: string; position: string; imageUrl: string | null }) => ({
         name: leader.name,
         role: leader.position,
         image: leader.imageUrl ?? MASCOT_IMAGE,
@@ -68,7 +68,7 @@ export default async function Home() {
     }
 
     if (dbFaqs.length) {
-      faqs = dbFaqs.map((faq) => ({
+      faqs = dbFaqs.map((faq: { imageUrl: string | null; question: string; answer: string }) => ({
         profileImg: faq.imageUrl ?? MASCOT_IMAGE,
         question: faq.question,
         response: faq.answer.split("\n"),

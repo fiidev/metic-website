@@ -1,4 +1,5 @@
 {
+  "type": "module",
   "name": "metic-web",
   "version": "0.1.0",
   "private": true,
@@ -21,9 +22,8 @@
     "@fortawesome/fontawesome-svg-core": "^7.3.0",
     "@fortawesome/free-solid-svg-icons": "^7.3.0",
     "@fortawesome/react-fontawesome": "^3.4.0",
-    "@neondatabase/serverless": "^1.1.0",
-    "@prisma/adapter-neon": "^7.8.0",
     "@prisma/client": "^7.8.0",
+    "@prisma/extension-accelerate": "^1.2.0",
     "clsx": "^2.1.1",
     "dotenv": "^16.4.7",
     "framer-motion": "^12.23.12",
@@ -32,8 +32,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "swiper": "^11.2.10",
-    "tailwind-merge": "^3.3.1",
-    "ws": "^8.21.0"
+    "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -41,7 +40,6 @@
     "@types/node": "^26.1.1",
     "@types/react": "^19",
     "@types/react-dom": "^19",
-    "@types/ws": "^8.18.1",
     "eslint": "^9",
     "eslint-config-next": "15.3.4",
     "flatted": "^3.4.2",

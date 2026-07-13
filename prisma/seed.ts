@@ -1,25 +1,15 @@
 import "dotenv/config";
-
-import { PrismaClient } from "@prisma/client";
-import { PrismaNeon } from "@prisma/adapter-neon";
-import { neonConfig } from "@neondatabase/serverless";
+import { PrismaClient } from "../src/generated/prisma/client";
+import { withAccelerate } from "@prisma/extension-accelerate";
 import { divisi } from "../src/app/_components/const/datas";
 import { LeadersData, TrackData, dataFAQ } from "../src/app/_components/const/datas";
-import ws from "ws";
 import { parseMemberRole, slugify, parseDate } from "./utils/parser";
 
-neonConfig.webSocketConstructor = ws;
-
-const adapter = new PrismaNeon({
-  connectionString: process.env.DATABASE_URL!,
-});
-
 const prisma = new PrismaClient({
-  adapter,
-});
+  accelerateUrl: process.env.DATABASE_URL!,
+}).$extends(withAccelerate());
 
 const leaderMemberMap: Record<string, string> = {
-  "Sauqy Rahmatul Ramadhan": "Sauqy Rahmatul Ramadhan",
   "Muhammad Syamil Muwahhid": "M Syamil Muwahhid",
   "Naufal Nabil R.": "Naufal Nabil Ramadhan",
   "Muhammad Radika A. B.": "M. Radika Afwa Bimalaksa",
