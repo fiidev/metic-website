@@ -1,0 +1,224 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Generation {
+  id          String   @id @default(cuid())
+  name        String   @unique
+  number      Int      @unique
+  year        Int?
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  members     Member[]
+
+  @@index([number])
+  @@index([name])
+}
+
+model Division {
+  id          String           @id @default(cuid())
+  slug        String           @unique
+  name        String           @unique
+  alias       String?
+  description String
+  preview     String?
+  logoUrl     String?
+  order       Int              @default(0)
+  isPublished Boolean          @default(true)
+  createdAt   DateTime         @default(now())
+  updatedAt   DateTime         @updatedAt
+  members     MemberDivision[]
+  portfolios  Portfolio[]
+  programs    Program[]
+
+  @@index([name])
+  @@index([slug])
+  @@index([order])
+}
+
+model Role {
+  id          String       @id @default(cuid())
+  name        String       @unique
+  description String?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  members     MemberRole[]
+
+  @@index([name])
+}
+
+model Member {
+  id                    String                @id @default(cuid())
+  generationId          String
+  name                  String
+  nickname              String?
+  imageUrl              String?
+  bio                   String?
+  instagram             String?
+  linkedin              String?
+  github                String?
+  website               String?
+  isAlumni              Boolean               @default(false)
+  order                 Int                   @default(0)
+  createdAt             DateTime              @default(now())
+  updatedAt             DateTime              @updatedAt
+  generation            Generation            @relation(fields: [generationId], references: [id])
+  memberDivisions       MemberDivision[]
+  memberRoles           MemberRole[]
+  organizationPositions OrganizationPosition?
+
+  @@unique([name, generationId])
+  @@index([generationId])
+  @@index([name])
+  @@index([order])
+}
+
+model MemberRole {
+  memberId   String
+  roleId     String
+  assignedAt DateTime @default(now())
+  member     Member   @relation(fields: [memberId], references: [id], onDelete: Cascade)
+  role       Role     @relation(fields: [roleId], references: [id])
+
+  @@id([memberId, roleId])
+  @@index([roleId])
+}
+
+model Program {
+  id          String   @id @default(cuid())
+  divisionId  String
+  title       String
+  description String
+  order       Int      @default(0)
+  isPublished Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  division    Division @relation(fields: [divisionId], references: [id], onDelete: Cascade)
+
+  @@unique([divisionId, title])
+  @@index([divisionId])
+  @@index([order])
+}
+
+model MemberDivision {
+  memberId   String
+  divisionId String
+  joinedAt   DateTime @default(now())
+  division   Division @relation(fields: [divisionId], references: [id], onDelete: Cascade)
+  member     Member   @relation(fields: [memberId], references: [id], onDelete: Cascade)
+
+  @@id([memberId, divisionId])
+  @@index([divisionId])
+}
+
+model Portfolio {
+  id            String           @id @default(cuid())
+  divisionId    String
+  title         String
+  description   String?
+  socialMedia   String?
+  link          String?
+  eventDate     DateTime?
+  coverImageUrl String?
+  order         Int              @default(0)
+  isPublished   Boolean          @default(true)
+  createdAt     DateTime         @default(now())
+  updatedAt     DateTime         @updatedAt
+  division      Division         @relation(fields: [divisionId], references: [id], onDelete: Cascade)
+  images        PortfolioImage[]
+
+  @@unique([divisionId, title])
+  @@index([divisionId])
+  @@index([eventDate])
+  @@index([order])
+}
+
+model PortfolioImage {
+  id          String    @id @default(cuid())
+  portfolioId String
+  imageUrl    String
+  alt         String?
+  order       Int       @default(0)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+  portfolio   Portfolio @relation(fields: [portfolioId], references: [id], onDelete: Cascade)
+
+  @@unique([portfolioId, imageUrl])
+  @@index([portfolioId])
+  @@index([order])
+}
+
+model TrackRecord {
+  id          String          @id @default(cuid())
+  title       String
+  displayName String?
+  description String
+  imageUrl    String?
+  recordType  TrackRecordType
+  country     String?
+  recordDate  DateTime?
+  link        String?
+  order       Int             @default(0)
+  isPublished Boolean         @default(true)
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+
+  @@unique([title, recordType])
+  @@index([recordType])
+  @@index([recordDate])
+  @@index([order])
+}
+
+model FAQ {
+  id          String   @id @default(cuid())
+  question    String
+  answer      String
+  imageUrl    String?
+  order       Int      @default(0)
+  isPublished Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@unique([question])
+  @@index([order])
+}
+
+model OrganizationPosition {
+  id String @id @default(cuid())
+
+  memberId String? @unique
+
+  name String
+
+  imageUrl String?
+
+  position String @unique
+
+  order Int @default(0)
+
+  isPublished Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  member Member? @relation(fields: [memberId], references: [id], onDelete: SetNull)
+
+  @@index([order])
+}
+
+enum TrackRecordType {
+  EVENT
+  INTERNATIONAL
+  ACHIEVEMENT
+}
+
+enum ContentStatus {
+  DRAFT
+  PUBLISHED
+  ARCHIVED
+}
