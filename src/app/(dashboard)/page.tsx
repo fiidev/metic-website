@@ -5,7 +5,7 @@ import Leader from "../_components/Leader";
 import { dataFAQ, LeadersData, TrackData } from "../_components/const/datas";
 import TrackRecord from "../_components/TrackRecord";
 import Faq from "../_components/FAQ";
-import { prisma } from "@/lib/prisma";
+import { getTrackRecords, getLeaders, getFAQs } from "@/lib/queries";
 
 const MASCOT_IMAGE = "/assets/image/mecaKeren.png";
 
@@ -33,18 +33,9 @@ export default async function Home() {
 
   try {
     const [dbTrackRecords, dbLeaders, dbFaqs] = await Promise.all([
-      prisma.trackRecord.findMany({
-        where: { isPublished: true },
-        orderBy: { order: "asc" },
-      }),
-      prisma.organizationPosition.findMany({
-        where: { isPublished: true },
-        orderBy: { order: "asc" },
-      }),
-      prisma.fAQ.findMany({
-        where: { isPublished: true },
-        orderBy: { order: "asc" },
-      }),
+      getTrackRecords(),
+      getLeaders(),
+      getFAQs(),
     ]);
 
     if (dbTrackRecords.length) {

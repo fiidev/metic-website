@@ -3,7 +3,7 @@ import ProgramKerjaHead from "./_components/ProgramKerjaHead";
 import Portofolio from "./_components/Portofolio";
 import Team from "./_components/Team";
 import { divisi, DivisiProps } from "@/app/_components/const/datas";
-import { prisma } from "@/lib/prisma";
+import { getDivisions, getDivisionBySlug } from "@/lib/queries";
 
 type Params = Promise<{ id: string }>;
 
@@ -23,10 +23,7 @@ function formatPortfolioDate(date: Date | null) {
 
 export async function generateStaticParams() {
   try {
-    const divisions = await prisma.division.findMany({
-      where: { isPublished: true },
-      select: { slug: true },
-    });
+    const divisions = await getDivisions();
 
     if (divisions.length) {
       return divisions.map((division: { slug: string }) => ({ id: division.slug }));
@@ -44,29 +41,7 @@ export default async function DivisionPage({ params }: { params: Params }) {
   let divisionData: DivisiProps | undefined;
 
   try {
-    const division = await prisma.division.findFirst({
-      where: { slug, isPublished: true },
-      include: {
-        programs: {
-          where: { isPublished: true },
-          orderBy: { order: "asc" },
-        },
-        portfolios: {
-          where: { isPublished: true },
-          orderBy: { order: "asc" },
-        },
-        members: {
-          include: {
-            member: {
-              include: {
-                generation: true,
-                memberRoles: { include: { role: true } },
-              },
-            },
-          },
-        },
-      },
-    });
+    const division = await getDivisionBySlug(slug);
 
     if (division) {
       divisionData = {

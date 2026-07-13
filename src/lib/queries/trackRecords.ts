@@ -5,13 +5,14 @@ import { cache } from "react";
 
 export const getTrackRecords = cache(async () => {
   return prisma.trackRecord.findMany({
+    where: { isPublished: true },
     orderBy: { order: "asc" },
   });
 });
 
 export const getTrackRecordsByType = cache(async (type: "EVENT" | "INTERNATIONAL" | "ACHIEVEMENT") => {
   return prisma.trackRecord.findMany({
-    where: { recordType: type },
+    where: { recordType: type, isPublished: true },
     orderBy: { order: "asc" },
   });
 });

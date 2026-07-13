@@ -5,6 +5,7 @@ import { cache } from "react";
 
 export const getLeaders = cache(async () => {
   return prisma.organizationPosition.findMany({
+    where: { isPublished: true },
     orderBy: { order: "asc" },
     include: {
       member: {
