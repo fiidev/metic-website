@@ -13,9 +13,8 @@ export const auth = betterAuth({
     enabled: true,
     requireEmailVerification: false,
     autoSignIn: true,
-    sendResetPassword: false,
   },
-  disableSignUp: false,
+  disableSignUp: true,
   session: {
     expiresIn: 60 * 60 * 24 * 7,
     updateAge: 60 * 60 * 24,
