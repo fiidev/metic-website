@@ -5,6 +5,7 @@ import { cache } from "react";
 
 export const getDivisions = cache(async () => {
   return prisma.division.findMany({
+    where: { isPublished: true },
     orderBy: { order: "asc" },
     include: {
       members: {
@@ -38,8 +39,8 @@ export const getDivisions = cache(async () => {
 });
 
 export const getDivisionBySlug = cache(async (slug: string) => {
-  return prisma.division.findUnique({
-    where: { slug },
+  return prisma.division.findFirst({
+    where: { slug, isPublished: true },
     include: {
       members: {
         include: {
@@ -59,9 +60,11 @@ export const getDivisionBySlug = cache(async (slug: string) => {
         },
       },
       programs: {
+        where: { isPublished: true },
         orderBy: { order: "asc" },
       },
       portfolios: {
+        where: { isPublished: true },
         orderBy: { order: "asc" },
         include: {
           images: true,

@@ -3,23 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import { divisi } from "./const/datas";
 import AnimatedContent from "./AnimatedContent";
-import { prisma } from "@/lib/prisma";
-
-
-<AnimatedContent
-  distance={150}
-  direction="horizontal"
-  reverse={false}
-  duration={1.2}
-  ease="bounce.out"
-  initialOpacity={0.2}
-  animateOpacity
-  scale={1.1}
-  threshold={0.2}
-  delay={1.0}
->
-  <div>join now</div>
-</AnimatedContent>
+import { getDivisions } from "@/lib/queries";
 
 export default async function DivisionSection() {
   let divisions = divisi.map((division) => ({
@@ -30,10 +14,7 @@ export default async function DivisionSection() {
   }));
 
   try {
-    const dbDivisions = await prisma.division.findMany({
-      where: { isPublished: true },
-      orderBy: { order: "asc" },
-    });
+    const dbDivisions = await getDivisions();
 
     if (dbDivisions.length) {
       divisions = dbDivisions.map((division: { name: string; preview: string | null; logoUrl: string | null; slug: string }) => ({
