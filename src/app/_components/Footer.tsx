@@ -9,7 +9,7 @@ export default function Footer() {
           <div className="flex justify-between min-xl:items-center">
             <div className="flex flex-col max-sm:w-[50%] gap-7">
               <Image
-                src="/assets/image/logo-metic-footer.png"
+                src="https://res.cloudinary.com/stt7o3mb/image/upload/v1784892642/assets/image/logo-metic-footer.png"
                 alt="Logo Metic"
                 width={81}
                 height={40}

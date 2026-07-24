@@ -48,7 +48,7 @@ export default function Header() {
         </div>
         <div className="text-center drop-shadow-[0_6px_97.5px_rgba(225,95,96,0.73)]">
           <Image
-            src="/assets/image/meca-header-4x.png"
+            src="https://res.cloudinary.com/stt7o3mb/image/upload/v1784892650/assets/image/meca-header-4x.png"
             alt="Arrow Down"
             width={484}
             height={235}
@@ -63,70 +63,70 @@ export default function Header() {
         </div>
         <div className="hiasan">
           <Image
-            src="/assets/image/server-rack.png"
+            src="https://res.cloudinary.com/stt7o3mb/image/upload/v1784892679/assets/image/server-rack.png"
             alt="Server Rack"
             width={72}
             height={72}
             className=" min-xl:absolute max-md:hidden left-[153px] top-[150px] rotate-[-5deg]"
           />
           <Image
-            src="/assets/image/triangle-sm.png"
+            src="https://res.cloudinary.com/stt7o3mb/image/upload/v1784892691/assets/image/triangle-sm.png"
             alt="small triangle"
             width={32}
             height={28}
             className="min-xl:absolute max-md:hidden left-[263px] top-[236px] rotate-[-127deg]"
           />
           <Image
-            src="/assets/image/mc-triangle.png"
+            src="https://res.cloudinary.com/stt7o3mb/image/upload/v1784892649/assets/image/mc-triangle.png"
             alt="segitiga kiri"
             width={343.5}
             height={307.5}
             className="min-xl:absolute max-md:hidden left-[100px] top-[359px] "
           />
           <Image
-            src="/assets/image/foto-bareng-triangle.png"
+            src="https://res.cloudinary.com/stt7o3mb/image/upload/v1784892624/assets/image/foto-bareng-triangle.png"
             alt="foto bareng segitiga"
             width={104}
             height={92.5}
             className="min-xl:absolute max-md:hidden left-[370px] top-[411px] rotate-[-5deg]"
           />
           <Image
-            src="/assets/image/right-triangle.png"
+            src="https://res.cloudinary.com/stt7o3mb/image/upload/v1784892677/assets/image/right-triangle.png"
             alt="triangle kanan"
             width={318}
             height={283.5}
             className="min-xl:absolute max-md:hidden right-[104px] top-[377px]"
           />
           <Image
-            src="/assets/image/desktop.png"
+            src="https://res.cloudinary.com/stt7o3mb/image/upload/v1784892607/assets/image/desktop.png"
             alt="desktop"
             width={65}
             height={65}
             className="min-xl:absolute max-md:hidden right-[350px] top-[400px]"
           />
           <Image
-            src="/assets/image/triangle-sm.png"
+            src="https://res.cloudinary.com/stt7o3mb/image/upload/v1784892691/assets/image/triangle-sm.png"
             alt="Server Rack"
             width={32}
             height={28}
             className="min-xl:absolute max-md:hidden right-[295px] top-[183px] rotate-[-5deg]"
           />
           <Image
-            src="/assets/image/triangle-lg.png"
+            src="https://res.cloudinary.com/stt7o3mb/image/upload/v1784892689/assets/image/triangle-lg.png"
             alt="triangle besar"
             width={90}
             height={81}
             className="min-xl:absolute max-md:hidden right-[108px] top-[264px]"
           />
           <Image
-            src="/assets/image/panah-kiri.png"
+            src="https://res.cloudinary.com/stt7o3mb/image/upload/v1784892668/assets/image/panah-kiri.png"
             alt="triangle kiri"
             width={161}
             height={32}
             className="min-xl:absolute max-md:hidden left-[320px] top-[640px]"
           />
           <Image
-            src="/assets/image/panah-kanan.png"
+            src="https://res.cloudinary.com/stt7o3mb/image/upload/v1784892665/assets/image/panah-kanan.png"
             alt="Server Rack"
             width={161}
             height={32}

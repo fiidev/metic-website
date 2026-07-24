@@ -7,7 +7,7 @@ import TrackRecord from "../_components/TrackRecord";
 import Faq from "../_components/FAQ";
 import { getTrackRecords, getLeaders, getFAQs } from "@/lib/queries";
 
-const MASCOT_IMAGE = "/assets/image/mecaKeren.png";
+const MASCOT_IMAGE = "https://res.cloudinary.com/stt7o3mb/image/upload/v1784892655/assets/image/mecaKeren.png";
 
 function formatShortDate(date: Date | null) {
   if (!date) return "";

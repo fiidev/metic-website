@@ -4,84 +4,84 @@ export default function Header({ data }: { data: DivisiProps }) {
   return (
     <>
       <Image
-        src="/assets/image/polygon-multipage.png"
+        src="https://res.cloudinary.com/stt7o3mb/image/upload/v1784892673/assets/image/polygon-multipage.png"
         alt="Division Header"
         width={204}
         height={183}
         className="max-sm:hidden min-xl:absolute left-[98px] top-[370px] rotate-[-34deg]"
       />
       <Image
-        src="/assets/image/polygon-multipage.png"
+        src="https://res.cloudinary.com/stt7o3mb/image/upload/v1784892673/assets/image/polygon-multipage.png"
         alt="Division Header"
         width={204}
         height={183}
         className="max-sm:hidden min-xl:absolute right-[85px] top-[248px]"
       />
       <Image
-        src="/assets/image/panah-kiri-multipage.png"
+        src="https://res.cloudinary.com/stt7o3mb/image/upload/v1784892667/assets/image/panah-kiri-multipage.png"
         alt="triangle kiri"
         width={161}
         height={32}
         className="max-sm:hidden min-xl:absolute left-[347px] top-[540px]"
       />
       <Image
-        src="/assets/image/panah-kanan-multipage.png"
+        src="https://res.cloudinary.com/stt7o3mb/image/upload/v1784892664/assets/image/panah-kanan-multipage.png"
         alt="Server Rack"
         width={161}
         height={32}
         className="max-sm:hidden min-xl:absolute right-[315px] top-[421px]"
       />
       <Image
-        src="/assets/image/server-rack.png"
+        src="https://res.cloudinary.com/stt7o3mb/image/upload/v1784892679/assets/image/server-rack.png"
         alt="Server Rack"
         width={72}
         height={72}
         className="max-sm:hidden min-xl:absolute left-[380px] top-[696px] rotate-[-5deg]"
       />
       <Image
-        src="/assets/image/desktop.png"
+        src="https://res.cloudinary.com/stt7o3mb/image/upload/v1784892607/assets/image/desktop.png"
         alt="desktop"
         width={65}
         height={65}
         className="max-sm:hidden min-xl:absolute right-[311px] top-[778px]"
       />
       <Image
-        src="/assets/image/cakar.png"
+        src="https://res.cloudinary.com/stt7o3mb/image/upload/v1784892601/assets/image/cakar.png"
         alt="Division Header"
         width={58}
         height={55}
         className="max-sm:hidden min-xl:absolute top-[784px] left-[205px]"
       />
       <Image
-        src="/assets/image/cakar.png"
+        src="https://res.cloudinary.com/stt7o3mb/image/upload/v1784892601/assets/image/cakar.png"
         alt="Division Header"
         width={58}
         height={55}
         className="max-sm:hidden min-xl:absolute right-[204px] top-[559px] rotate-[-41deg]"
       />
       <Image
-        src="/assets/image/pen-tool.png"
+        src="https://res.cloudinary.com/stt7o3mb/image/upload/v1784892671/assets/image/pen-tool.png"
         alt="Division Header"
         width={67}
         height={67}
         className="max-sm:hidden min-xl:absolute left-[505px] top-[768px]"
       />
       <Image
-        src="/assets/image/verified-handphone.png"
+        src="https://res.cloudinary.com/stt7o3mb/image/upload/v1784892693/assets/image/verified-handphone.png"
         alt="Server Rack"
         width={72}
         height={72}
         className="max-sm:hidden min-xl:absolute left-[643px] top-[699px] rotate-[-5deg]"
       />
       <Image
-        src="/assets/image/kamera.png"
+        src="https://res.cloudinary.com/stt7o3mb/image/upload/v1784892633/assets/image/kamera.png"
         alt="desktop"
         width={65}
         height={65}
         className="max-sm:hidden min-xl:absolute right-[590px] top-[784px]"
       />
       <Image
-        src="/assets/image/laptop.png"
+        src="https://res.cloudinary.com/stt7o3mb/image/upload/v1784892638/assets/image/laptop.png"
         alt="desktop"
         width={65}
         height={65}

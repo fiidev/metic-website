@@ -40,7 +40,7 @@ export default function Navbar() {
     <nav className="xl:relative fixed top-0 z-[999] mx-auto w-full flex flex-col">
       <div className="w-full flex xl:max-w-[1192px]  mx-auto z-[999] py-4 xl:py-0 px-5 bg-white xl:bg-transparent justify-between items-center">
         <Link href={"/"} className="xl:mt-[36px] ">
-          <span className="block w-[130px] h-[39px] bg-contain bg-[url(/assets/image/logo.png)] text-transparent bg-no-repeat pointer-events-none select-none">
+          <span className="block w-[130px] h-[39px] bg-contain bg-[url(https://res.cloudinary.com/stt7o3mb/image/upload/v1784892646/assets/image/logo.png)] text-transparent bg-no-repeat pointer-events-none select-none">
             Moklet Organization: SMK Telkom Malang
           </span>
         </Link>
@@ -54,7 +54,7 @@ export default function Navbar() {
           {scrolled && (
             <Link href="/">
               <Image
-                src={"/assets/image/logo.png"}
+                src={"https://res.cloudinary.com/stt7o3mb/image/upload/v1784892646/assets/image/logo.png"}
                 alt="Moklet Organization: SMK Telkom Malang"
                 width={120}
                 height={50}
@@ -91,7 +91,7 @@ export default function Navbar() {
           >
             <div className="hidden xl:block w-[33px] h-[33px] rounded-full bg-primary text-transparent pointer-events-none select-none">
               <Image
-                src={"/assets/image/tiktok-vector.png"}
+                src={"https://res.cloudinary.com/stt7o3mb/image/upload/v1784892688/assets/image/tiktok-vector.png"}
                 alt="TikTok Logo"
                 width={16}
                 height={18}
@@ -105,7 +105,7 @@ export default function Navbar() {
           >
             <div className="hidden xl:block w-[33px] h-[33px] rounded-full bg-primary text-transparent pointer-events-none select-none">
               <Image
-                src={"/assets/image/ig-vector.png"}
+                src={"https://res.cloudinary.com/stt7o3mb/image/upload/v1784892631/assets/image/ig-vector.png"}
                 alt="TikTok Logo"
                 width={17}
                 height={17}

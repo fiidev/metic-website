@@ -17,21 +17,21 @@ export default function Visi() {
             </div>
             <div className="">
             <Image
-                src="/assets/image/meca-visi-misi.png"
+                src="https://res.cloudinary.com/stt7o3mb/image/upload/v1784892654/assets/image/meca-visi-misi.png"
                 alt="Arrow Down"
                 width={380}
                 height={280}
                 className="max-sm:hidden min-xl:absolute mt-[22.5px] drop-shadow-[0_3px_90px_rgba(255,255,255,0.73)] right-0 z-[1]"
             />
             <Image
-                src="/assets/image/icon-kucing-kaget.png"
+                src="https://res.cloudinary.com/stt7o3mb/image/upload/v1784892626/assets/image/icon-kucing-kaget.png"
                 alt="Arrow Down"
                 width={110}
                 height={110}
                 className="max-sm:hidden min-xl:absolute mt-[118.5px] drop-shadow-[0_3px_90px_rgba(255,255,255,0.73)] right-[550px] z-[1]"
             />
             <Image
-                src="/assets/image/icon-kucing-love.png"
+                src="https://res.cloudinary.com/stt7o3mb/image/upload/v1784892628/assets/image/icon-kucing-love.png"
                 alt="Arrow Down"
                 width={100}
                 height={100}
@@ -59,7 +59,7 @@ export default function Visi() {
                     </p>
                 </div>
                 <Image
-                    src="/assets/image/meca-sm.png"
+                    src="https://res.cloudinary.com/stt7o3mb/image/upload/v1784892653/assets/image/meca-sm.png"
                     alt="Arrow Down"
                     width={420}
                     height={320}

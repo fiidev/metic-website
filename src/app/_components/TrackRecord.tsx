@@ -108,21 +108,21 @@ const TrackRecord: React.FC<{ datas: TrackRecordProps[] }> = ({ datas }) => {
       </div>
       <div className="flex max-sm:flex-col items-center w-full mt-[70px] pb-[30px]">
         <Image
-          src="/assets/image/meca-international.png"
+          src="https://res.cloudinary.com/stt7o3mb/image/upload/v1784892652/assets/image/meca-international.png"
           alt="Arrow Down"
           width={490}
           height={390}
           className="max-sm:hidden min-xl:absolute mt-[-58px] drop-shadow-[0_3px_90px_rgba(255,255,255,0.73)] left-0 z-[1]"
         />
         <Image
-          src="/assets/image/icon-piala.png"
+          src="https://res.cloudinary.com/stt7o3mb/image/upload/v1784892629/assets/image/icon-piala.png"
           alt="Arrow Down"
           width={110}
           height={110}
           className="max-sm:hidden min-xl:absolute mt-[-420px] drop-shadow-[0_3px_90px_rgba(255,255,255,0.73)] left-[360px] z-[1]"
         />
         <Image
-          src="/assets/image/icon-global.png"
+          src="https://res.cloudinary.com/stt7o3mb/image/upload/v1784892625/assets/image/icon-global.png"
           alt="Arrow Down"
           width={87}
           height={87}
