@@ -47,7 +47,7 @@ export default async function DivisionPage({ params }: { params: Params }) {
       divisionData = {
         id: division.id,
         name: division.name,
-        image: division.logoUrl ?? "https://res.cloudinary.com/stt7o3mb/image/upload/v1784892655/assets/image/mecaKeren.png",
+        image: division.logoUrl ?? "/assets/image/mecaKeren.png",
         preview: division.preview ?? "",
         alias: division.alias ?? division.name,
         desc: division.description,
@@ -59,7 +59,7 @@ export default async function DivisionPage({ params }: { params: Params }) {
           id: portfolio.id,
           title: portfolio.title,
           sosmed: portfolio.socialMedia ?? "",
-          image: portfolio.coverImageUrl ?? "https://res.cloudinary.com/stt7o3mb/image/upload/v1784892655/assets/image/mecaKeren.png",
+          image: portfolio.coverImageUrl ?? "/assets/image/mecaKeren.png",
           link: portfolio.link ?? "#",
           date: formatPortfolioDate(portfolio.eventDate),
         })),
@@ -67,7 +67,7 @@ export default async function DivisionPage({ params }: { params: Params }) {
           .sort((a: { member: { order: number } }, b: { member: { order: number } }) => a.member.order - b.member.order)
           .map(({ member }: { member: { name: string; imageUrl: string | null; generation: { name: string }; memberRoles: { role: { name: string } }[] } }) => ({
             name: member.name,
-            image: member.imageUrl ?? "https://res.cloudinary.com/stt7o3mb/image/upload/v1784892655/assets/image/mecaKeren.png",
+            image: member.imageUrl ?? "/assets/image/mecaKeren.png",
             role: `${member.generation.name} | ${member.memberRoles
               .map(({ role }: { role: { name: string } }) => role.name)
               .join(", ")}`,

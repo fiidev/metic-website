@@ -20,7 +20,7 @@ export default async function DivisionSection() {
       divisions = dbDivisions.map((division: { name: string; preview: string | null; logoUrl: string | null; slug: string }) => ({
         name: division.name,
         preview: division.preview ?? "",
-        image: division.logoUrl ?? "https://res.cloudinary.com/stt7o3mb/image/upload/v1784892655/assets/image/mecaKeren.png",
+        image: division.logoUrl ?? "/assets/image/mecaKeren.png",
         slug: division.slug,
       }));
     }
@@ -81,7 +81,7 @@ export default async function DivisionSection() {
           {/* <div className="flex drop-shadow-[1px_2px_8px_rgba(0,0,0,0.25)] bg-white flex-col items-center justify-center w-[339px] h-[496px] rounded-[26.42px] py-[39px] px-[46px] gap-[18px]">
             <div className="block w-[247px] h-[247px] bg-primary rounded-full">
               <Image
-                src="https://res.cloudinary.com/stt7o3mb/image/upload/v1784892640/assets/image/logo-medcom.png"
+                src="/assets/image/logo-medcom.png"
                 alt="Moklet Dev"
                 width={123}
                 height={88}
@@ -100,7 +100,7 @@ export default async function DivisionSection() {
           <div className="flex drop-shadow-[1px_2px_8px_rgba(0,0,0,0.25)] bg-white flex-col items-center justify-center w-[339px] h-[496px] rounded-[26.42px] py-[39px] px-[46px] gap-[18px]">
             <div className="block w-[247px] h-[247px] bg-primary rounded-full">
               <Image
-                src="https://res.cloudinary.com/stt7o3mb/image/upload/v1784892643/assets/image/logo-meticmerch.png"
+                src="/assets/image/logo-meticmerch.png"
                 alt="Moklet Dev"
                 width={127}
                 height={71}

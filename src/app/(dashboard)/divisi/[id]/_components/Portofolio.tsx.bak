@@ -8,7 +8,7 @@ export default function Portofolio({ divisi }: { divisi: DivisiProps }) {
       <div className="pt-48 pb-20">
         <div className="flex mx-auto items-center justify-center gap-2">
           <Image
-            src="https://res.cloudinary.com/stt7o3mb/image/upload/v1784892634/assets/image/kardus.png"
+            src="/assets/image/kardus.png"
             alt="kardus"
             width={49}
             height={54}
@@ -20,7 +20,7 @@ export default function Portofolio({ divisi }: { divisi: DivisiProps }) {
             </span>
           </h1>
           <Image
-            src="https://res.cloudinary.com/stt7o3mb/image/upload/v1784892634/assets/image/kardus.png"
+            src="/assets/image/kardus.png"
             alt="kardus"
             width={49}
             height={54}
