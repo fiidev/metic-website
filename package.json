@@ -45,7 +45,7 @@
     "eslint-config-next": "15.3.4",
     "flatted": "^3.4.2",
     "js-yaml": "^4.3.0",
-    "prisma": "^7.8.0",
+    "prisma": "^7.9.0",
     "tailwindcss": "^4",
     "tsx": "^4.23.0",
     "typescript": "^5"
