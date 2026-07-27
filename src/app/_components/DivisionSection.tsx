@@ -1,3 +1,4 @@
+import { ASSETS } from "@/lib/assets";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
@@ -20,7 +21,7 @@ export default async function DivisionSection() {
       divisions = dbDivisions.map((division: { name: string; preview: string | null; logoUrl: string | null; slug: string }) => ({
         name: division.name,
         preview: division.preview ?? "",
-        image: division.logoUrl ?? "https://res.cloudinary.com/u91ilidx/image/upload/v1785173960/metic-website/mecakeren.png",
+        image: division.logoUrl ?? ASSETS.mascot,
         slug: division.slug,
       }));
     }

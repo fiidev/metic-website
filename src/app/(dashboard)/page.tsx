@@ -1,3 +1,4 @@
+import { ASSETS } from "@/lib/assets";
 import DivisionSection from "../_components/DivisionSection";
 import Header from "../_components/Header";
 import Visi from "../_components/Visi";
@@ -7,7 +8,7 @@ import TrackRecord from "../_components/TrackRecord";
 import Faq from "../_components/FAQ";
 import { getTrackRecords, getLeaders, getFAQs } from "@/lib/queries";
 
-const MASCOT_IMAGE = "https://res.cloudinary.com/u91ilidx/image/upload/v1785173960/metic-website/mecakeren.png";
+const MASCOT_IMAGE = ASSETS.mascot;
 
 function formatShortDate(date: Date | null) {
   if (!date) return "";

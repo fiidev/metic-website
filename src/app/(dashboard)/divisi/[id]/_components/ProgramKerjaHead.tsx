@@ -1,3 +1,4 @@
+import { ASSETS } from "@/lib/assets";
 import { DivisiProps } from "@/app/_components/const/datas";
 import Image from "next/image";
 
@@ -113,8 +114,7 @@ export default function ProgramKerjaHead({ prokja, name }: ProgramKerjaHeadProps
 
           {/* Decorative stars */}
           <Image
-            src="https://res.cloudinary.com/u91ilidx/image/upload/v1785174426/metic-website/stars-multipage.png"
-            alt="Decorative Stars"
+            src={ASSETS.starsMultipage} alt="Decorative Stars"
             width={519}
             height={401}
             className="absolute left-[430px] mt-[170px] drop-shadow-[0_3px_90px_rgba(255,255,255,0.73)] right-0 z-[1]"
@@ -122,8 +122,7 @@ export default function ProgramKerjaHead({ prokja, name }: ProgramKerjaHeadProps
 
           {/* Main character */}
           <Image
-            src="https://res.cloudinary.com/u91ilidx/image/upload/v1785174333/metic-website/noir-multipage.png"
-            alt="METIC Mascot"
+            src={ASSETS.noirMultipage} alt="METIC Mascot"
             width={572}
             height={628}
             className="mt-[22.5px] block mx-auto drop-shadow-[0_3px_90px_rgba(255,255,255,0.73)] right-0 z-[1]"

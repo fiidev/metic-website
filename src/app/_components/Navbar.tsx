@@ -1,4 +1,5 @@
 "use client";
+import { ASSETS } from "@/lib/assets";
 
 import Image from "next/image";
 import Link from "next/link";
@@ -40,7 +41,8 @@ export default function Navbar() {
     <nav className="xl:relative fixed top-0 z-[999] mx-auto w-full flex flex-col">
       <div className="w-full flex xl:max-w-[1192px]  mx-auto z-[999] py-4 xl:py-0 px-5 bg-white xl:bg-transparent justify-between items-center">
         <Link href={"/"} className="xl:mt-[36px] ">
-          <span className="block w-[130px] h-[39px] bg-contain bg-[url(https://res.cloudinary.com/u91ilidx/image/upload/v1785173949/metic-website/logo.png)] text-transparent bg-no-repeat pointer-events-none select-none">
+          <span className="block w-[130px] h-[39px] bg-contain text-transparent bg-no-repeat pointer-events-none select-none"
+            style={{ backgroundImage: `url(${ASSETS.logo})` }}>
             Moklet Organization: SMK Telkom Malang
           </span>
         </Link>
@@ -54,8 +56,7 @@ export default function Navbar() {
           {scrolled && (
             <Link href="/">
               <Image
-                src={"https://res.cloudinary.com/u91ilidx/image/upload/v1785173949/metic-website/logo.png"}
-                alt="Moklet Organization: SMK Telkom Malang"
+                src={ASSETS.logo} alt="Moklet Organization: SMK Telkom Malang"
                 width={120}
                 height={50}
                 className={cn(
@@ -91,8 +92,7 @@ export default function Navbar() {
           >
             <div className="hidden xl:block w-[33px] h-[33px] rounded-full bg-primary text-transparent pointer-events-none select-none">
               <Image
-                src={"https://res.cloudinary.com/u91ilidx/image/upload/v1785174431/metic-website/tiktok-vector.png"}
-                alt="TikTok Logo"
+                src={ASSETS.tiktokVector} alt="TikTok Logo"
                 width={16}
                 height={18}
                 className="mx-auto py-1.5"
@@ -105,8 +105,7 @@ export default function Navbar() {
           >
             <div className="hidden xl:block w-[33px] h-[33px] rounded-full bg-primary text-transparent pointer-events-none select-none">
               <Image
-                src={"https://res.cloudinary.com/u91ilidx/image/upload/v1785173932/metic-website/ig-vector.png"}
-                alt="TikTok Logo"
+                src={ASSETS.igVector} alt="TikTok Logo"
                 width={17}
                 height={17}
                 className="mx-auto py-2"

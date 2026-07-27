@@ -1,4 +1,5 @@
 "use client";
+import { ASSETS } from "@/lib/assets";
 import Image from "next/image";
 import { FAQCard, FAQCardProps } from "./card";
 import { useEffect, useState } from "react";
@@ -81,14 +82,14 @@ export default function Faq({ datas }: { datas: FAQCardProps[] }) {
 
           {/* Paw Images */}
           <Image
-            src="https://res.cloudinary.com/u91ilidx/image/upload/v1785173842/metic-website/cakar-kanan.png" // ganti path sesuai gambar yang kamu upload
+            src={ASSETS.cakarKanan}
             alt="Paw left"
             width={200}
             height={200}
             className="absolute bottom-4 max-sm:hidden left-6 opacity-90 animate-pulse"
           />
           <Image
-            src="https://res.cloudinary.com/u91ilidx/image/upload/v1785173843/metic-website/cakar-kiri.png" // sama dengan atas
+            src={ASSETS.cakarKiri}
             alt="Paw right"
             width={200}
             height={200}

@@ -1,4 +1,5 @@
 "use client";
+import { ASSETS } from "@/lib/assets";
 
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
@@ -108,22 +109,19 @@ const TrackRecord: React.FC<{ datas: TrackRecordProps[] }> = ({ datas }) => {
       </div>
       <div className="flex max-sm:flex-col items-center w-full mt-[70px] pb-[30px]">
         <Image
-          src="https://res.cloudinary.com/u91ilidx/image/upload/v1785173955/metic-website/meca-international.png"
-          alt="Arrow Down"
+          src={ASSETS.mecaInternational} alt="Arrow Down"
           width={490}
           height={390}
           className="max-sm:hidden min-xl:absolute mt-[-58px] drop-shadow-[0_3px_90px_rgba(255,255,255,0.73)] left-0 z-[1]"
         />
         <Image
-          src="https://res.cloudinary.com/u91ilidx/image/upload/v1785173930/metic-website/icon-piala.png"
-          alt="Arrow Down"
+          src={ASSETS.iconPiala} alt="Arrow Down"
           width={110}
           height={110}
           className="max-sm:hidden min-xl:absolute mt-[-420px] drop-shadow-[0_3px_90px_rgba(255,255,255,0.73)] left-[360px] z-[1]"
         />
         <Image
-          src="https://res.cloudinary.com/u91ilidx/image/upload/v1785173926/metic-website/icon-global.png"
-          alt="Arrow Down"
+          src={ASSETS.iconGlobal} alt="Arrow Down"
           width={87}
           height={87}
           className="max-sm:hidden min-xl:absolute mt-[88.5px] drop-shadow-[0_3px_90px_rgba(255,255,255,0.73)] left-[401px] z-[1]"

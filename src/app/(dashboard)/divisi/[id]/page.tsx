@@ -1,3 +1,4 @@
+import { ASSETS } from "@/lib/assets";
 import Header from "./_components/Header";
 import ProgramKerjaHead from "./_components/ProgramKerjaHead";
 import Portofolio from "./_components/Portofolio";
@@ -47,7 +48,7 @@ export default async function DivisionPage({ params }: { params: Params }) {
       divisionData = {
         id: division.id,
         name: division.name,
-        image: division.logoUrl ?? "https://res.cloudinary.com/u91ilidx/image/upload/v1785173960/metic-website/mecakeren.png",
+        image: division.logoUrl ?? ASSETS.mascot,
         preview: division.preview ?? "",
         alias: division.alias ?? division.name,
         desc: division.description,
@@ -59,7 +60,7 @@ export default async function DivisionPage({ params }: { params: Params }) {
           id: portfolio.id,
           title: portfolio.title,
           sosmed: portfolio.socialMedia ?? "",
-          image: portfolio.coverImageUrl ?? "https://res.cloudinary.com/u91ilidx/image/upload/v1785173960/metic-website/mecakeren.png",
+          image: portfolio.coverImageUrl ?? ASSETS.mascot,
           link: portfolio.link ?? "#",
           date: formatPortfolioDate(portfolio.eventDate),
         })),
@@ -67,7 +68,7 @@ export default async function DivisionPage({ params }: { params: Params }) {
           .sort((a: { member: { order: number } }, b: { member: { order: number } }) => a.member.order - b.member.order)
           .map(({ member }: { member: { name: string; imageUrl: string | null; generation: { name: string }; memberRoles: { role: { name: string } }[] } }) => ({
             name: member.name,
-            image: member.imageUrl ?? "https://res.cloudinary.com/u91ilidx/image/upload/v1785173960/metic-website/mecakeren.png",
+            image: member.imageUrl ?? ASSETS.mascot,
             role: `${member.generation.name} | ${member.memberRoles
               .map(({ role }: { role: { name: string } }) => role.name)
               .join(", ")}`,

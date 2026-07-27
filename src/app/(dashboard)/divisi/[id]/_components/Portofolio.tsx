@@ -1,3 +1,4 @@
+import { ASSETS } from "@/lib/assets";
 import { PortfolioCard } from "@/app/_components/card";
 import { DivisiProps } from "@/app/_components/const/datas";
 import Image from "next/image";
@@ -8,8 +9,7 @@ export default function Portofolio({ divisi }: { divisi: DivisiProps }) {
       <div className="pt-48 pb-20">
         <div className="flex mx-auto items-center justify-center gap-2">
           <Image
-            src="https://res.cloudinary.com/u91ilidx/image/upload/v1785173934/metic-website/kardus.png"
-            alt="kardus"
+            src={ASSETS.kardus} alt="kardus"
             width={49}
             height={54}
             className="max-sm:hidden min-xl:block"
@@ -20,8 +20,7 @@ export default function Portofolio({ divisi }: { divisi: DivisiProps }) {
             </span>
           </h1>
           <Image
-            src="https://res.cloudinary.com/u91ilidx/image/upload/v1785173934/metic-website/kardus.png"
-            alt="kardus"
+            src={ASSETS.kardus} alt="kardus"
             width={49}
             height={54}
             className="max-sm:hidden min-xl:block"
