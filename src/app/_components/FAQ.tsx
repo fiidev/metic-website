@@ -81,14 +81,14 @@ export default function Faq({ datas }: { datas: FAQCardProps[] }) {
 
           {/* Paw Images */}
           <Image
-            src="/assets/image/cakar-kanan.png" // ganti path sesuai gambar yang kamu upload
+            src="https://res.cloudinary.com/u91ilidx/image/upload/v1785173842/metic-website/cakar-kanan.png" // ganti path sesuai gambar yang kamu upload
             alt="Paw left"
             width={200}
             height={200}
             className="absolute bottom-4 max-sm:hidden left-6 opacity-90 animate-pulse"
           />
           <Image
-            src="/assets/image/cakar-kiri.png" // sama dengan atas
+            src="https://res.cloudinary.com/u91ilidx/image/upload/v1785173843/metic-website/cakar-kiri.png" // sama dengan atas
             alt="Paw right"
             width={200}
             height={200}

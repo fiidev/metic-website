@@ -43,3 +43,9 @@ next-env.d.ts
 /src/generated/prisma
 
 .vscode/
+
+# scripts output
+scripts/cloudinary-map.json
+
+# backup files
+*.bak

@@ -113,7 +113,7 @@ export default function ProgramKerjaHead({ prokja, name }: ProgramKerjaHeadProps
 
           {/* Decorative stars */}
           <Image
-            src="/assets/image/stars-multipage.png"
+            src="https://res.cloudinary.com/u91ilidx/image/upload/v1785174426/metic-website/stars-multipage.png"
             alt="Decorative Stars"
             width={519}
             height={401}
@@ -122,7 +122,7 @@ export default function ProgramKerjaHead({ prokja, name }: ProgramKerjaHeadProps
 
           {/* Main character */}
           <Image
-            src="/assets/image/noir-multipage.png"
+            src="https://res.cloudinary.com/u91ilidx/image/upload/v1785174333/metic-website/noir-multipage.png"
             alt="METIC Mascot"
             width={572}
             height={628}

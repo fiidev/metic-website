@@ -8,14 +8,14 @@ export default function Team({ divisi }: { divisi: DivisiProps }) {
       <div className="relative pb-35 bg-secondary">
         <div className="text-center pt-21">
           <Image
-            src="/assets/image/cakar-kiri.png"
+            src="https://res.cloudinary.com/u91ilidx/image/upload/v1785173843/metic-website/cakar-kiri.png"
             width={92}
             height={102}
             alt="Cakar Kiri"
             className="absolute left-4 sm:left-[424px] mt- w-16 h-16 sm:w-[92px] sm:h-[102px]"
           />
           <Image
-            src="/assets/image/cakar-kanan.png"
+            src="https://res.cloudinary.com/u91ilidx/image/upload/v1785173842/metic-website/cakar-kanan.png"
             width={92}
             height={102}
             alt="Cakar Kiri"

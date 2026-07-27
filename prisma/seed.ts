@@ -1,13 +1,12 @@
 import "dotenv/config";
 import { PrismaClient } from "../src/generated/prisma/client";
-import { withAccelerate } from "@prisma/extension-accelerate";
+import { PrismaPg } from "@prisma/adapter-pg";
 import { divisi } from "../src/app/_components/const/datas";
 import { LeadersData, TrackData, dataFAQ } from "../src/app/_components/const/datas";
 import { parseMemberRole, slugify, parseDate } from "./utils/parser";
 
-const prisma = new PrismaClient({
-  accelerateUrl: process.env.DATABASE_URL!,
-}).$extends(withAccelerate());
+const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
+const prisma = new PrismaClient({ adapter });
 
 const leaderMemberMap: Record<string, string> = {
   "Muhammad Syamil Muwahhid": "M Syamil Muwahhid",
