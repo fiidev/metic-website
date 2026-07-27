@@ -1,3 +1,4 @@
+import { ASSETS } from "@/lib/assets";
 import { CardTeam } from "@/app/_components/card";
 import { DivisiProps } from "@/app/_components/const/datas";
 import Image from "next/image";
@@ -8,15 +9,13 @@ export default function Team({ divisi }: { divisi: DivisiProps }) {
       <div className="relative pb-35 bg-secondary">
         <div className="text-center pt-21">
           <Image
-            src="/assets/image/cakar-kiri.png"
-            width={92}
+            src={ASSETS.cakarKiri} width={92}
             height={102}
             alt="Cakar Kiri"
             className="absolute left-4 sm:left-[424px] mt- w-16 h-16 sm:w-[92px] sm:h-[102px]"
           />
           <Image
-            src="/assets/image/cakar-kanan.png"
-            width={92}
+            src={ASSETS.cakarKanan} width={92}
             height={102}
             alt="Cakar Kiri"
             className="absolute right-4 sm:right-[433px] mt- w-16 h-16 sm:w-[92px] sm:h-[102px]"

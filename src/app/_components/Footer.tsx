@@ -1,3 +1,4 @@
+import { ASSETS } from "@/lib/assets";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,8 +10,7 @@ export default function Footer() {
           <div className="flex justify-between min-xl:items-center">
             <div className="flex flex-col max-sm:w-[50%] gap-7">
               <Image
-                src="/assets/image/logo-metic-footer.png"
-                alt="Logo Metic"
+                src={ASSETS.logoMeticFooter} alt="Logo Metic"
                 width={81}
                 height={40}
                 className=""
